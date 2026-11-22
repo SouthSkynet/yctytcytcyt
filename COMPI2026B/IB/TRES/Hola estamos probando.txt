@@ -1,3 +1,0 @@
-Hola, estamos probando el contador de caractéres en el programa lex.
-Y se realiza una comparativa con el programa realizado por la IA para verificar
-si existen diferencias en ambos, poniendo a prueba diferentes caracteres como (*, `@, +, /).
