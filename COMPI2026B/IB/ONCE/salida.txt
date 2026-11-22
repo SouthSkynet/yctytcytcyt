@@ -1,0 +1,9 @@
+CORREO VALIDO: soporte@epn.edu.ec
+CORREO VALIDO: rodrigo.chancusig@epn.edu.ec
+CORREO VALIDO: vanessa_pau@gmail.com
+CORREO INVALIDO: vanessa@
+CORREO INVALIDO: @hotmail.com
+CORREO INVALIDO: andre@dominio
+CORREO VALIDO: sebas.065+tareas@outlook.es
+
+Total de correos validos: 4

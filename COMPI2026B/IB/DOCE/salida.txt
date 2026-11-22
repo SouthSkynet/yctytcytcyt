@@ -1,0 +1,11 @@
+Binario: 101          Decimal: 5
+Binario: 1111         Decimal: 15
+Binario: 0            Decimal: 0
+Binario: 1            Decimal: 1
+Binario: 1010         Decimal: 10
+Binario: 11111111     Decimal: 255
+Binario: 10000000000  Decimal: 1024
+Binario: 0001         Decimal: 1
+Binario: 1100100      Decimal: 100
+
+Total de numeros binarios: 9
