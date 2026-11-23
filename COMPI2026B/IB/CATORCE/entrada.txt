@@ -1,0 +1,2 @@
+suma, 42, _temp, 100
+2a, 3.5, @error, x1
