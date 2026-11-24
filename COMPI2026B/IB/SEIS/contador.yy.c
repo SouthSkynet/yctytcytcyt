@@ -323,9 +323,6 @@ void yyfree ( void *  );
 #define YY_AT_BOL() (YY_CURRENT_BUFFER_LVALUE->yy_at_bol)
 
 /* Begin user sect3 */
-
-#define yywrap() (/*CONSTCOND*/1)
-#define YY_SKIP_YYWRAP
 typedef flex_uint8_t YY_CHAR;
 
 FILE *yyin = NULL, *yyout = NULL;
@@ -373,7 +370,7 @@ static const flex_int16_t yy_accept[15] =
 static const YY_CHAR yy_ec[256] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
-        2,    2,    2,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    2,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    2,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    4,    4,    4,
@@ -446,16 +443,15 @@ int yy_flex_debug = 0;
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
 #line 1 "contador.l"
-#define YY_NO_INPUT 1
 #line 4 "contador.l"
 #include <stdio.h>
 
-static size_t mayusculas;
-static size_t minusculas;
-static size_t digitos;
-static size_t blancos;
-#line 458 "contador.yy.c"
-#line 459 "contador.yy.c"
+int mayusculas = 0;
+int minusculas = 0;
+int digitos = 0;
+int blancos = 0;
+#line 454 "contador.yy.c"
+#line 455 "contador.yy.c"
 
 #define INITIAL 0
 
@@ -515,6 +511,8 @@ extern int yywrap ( void );
 #endif
 
 #ifndef YY_NO_UNPUT
+    
+    static void yyunput ( int c, char *buf_ptr  );
     
 #endif
 
@@ -672,7 +670,7 @@ YY_DECL
 	{
 #line 12 "contador.l"
 
-#line 676 "contador.yy.c"
+#line 674 "contador.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -758,9 +756,9 @@ YY_RULE_SETUP
 case 6:
 YY_RULE_SETUP
 #line 18 "contador.l"
-YY_FATAL_ERROR( "flex scanner jammed" );
+ECHO;
 	YY_BREAK
-#line 764 "contador.yy.c"
+#line 762 "contador.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1095,6 +1093,43 @@ static int yy_get_next_buffer (void)
 }
 
 #ifndef YY_NO_UNPUT
+
+    static void yyunput (int c, char * yy_bp )
+{
+	char *yy_cp;
+    
+    yy_cp = (yy_c_buf_p);
+
+	/* undo effects of setting up yytext */
+	*yy_cp = (yy_hold_char);
+
+	if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
+		{ /* need to shift things up to make room */
+		/* +2 for EOB chars. */
+		int number_to_move = (yy_n_chars) + 2;
+		char *dest = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[
+					YY_CURRENT_BUFFER_LVALUE->yy_buf_size + 2];
+		char *source =
+				&YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[number_to_move];
+
+		while ( source > YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
+			*--dest = *--source;
+
+		yy_cp += (int) (dest - source);
+		yy_bp += (int) (dest - source);
+		YY_CURRENT_BUFFER_LVALUE->yy_n_chars =
+			(yy_n_chars) = (int) YY_CURRENT_BUFFER_LVALUE->yy_buf_size;
+
+		if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
+			YY_FATAL_ERROR( "flex scanner push-back overflow" );
+		}
+
+	*--yy_cp = (char) c;
+
+	(yytext_ptr) = yy_bp;
+	(yy_hold_char) = *yy_cp;
+	(yy_c_buf_p) = yy_cp;
+}
 
 #endif
 
@@ -1734,10 +1769,10 @@ void yyfree (void * ptr )
 int main(void)
 {
     yylex();
-    printf("Mayusculas: %zu\n", mayusculas);
-    printf("Minusculas: %zu\n", minusculas);
-    printf("Digitos: %zu\n", digitos);
-    printf("Espacios en blanco: %zu\n", blancos);
+    printf("Mayusculas: %d\n", mayusculas);
+    printf("Minusculas: %d\n", minusculas);
+    printf("Digitos: %d\n", digitos);
+    printf("Espacios en blanco: %d\n", blancos);
     return 0;
 }
 

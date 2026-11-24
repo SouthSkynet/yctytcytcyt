@@ -1,28 +1,28 @@
-%option noyywrap noinput nounput nodefault
+
 
 %{
 #include <stdio.h>
 
-static size_t mayusculas;
-static size_t minusculas;
-static size_t digitos;
-static size_t blancos;
+int mayusculas = 0;
+int minusculas = 0;
+int digitos = 0;
+int blancos = 0;
 %}
 
 %%
 [A-Z]+          { mayusculas += yyleng; }
 [a-z]+          { minusculas += yyleng; }
 [0-9]+          { digitos += yyleng; }
-[ \t\r\n\v\f]+  { blancos += yyleng; }
+[ \t\r\n]+      { blancos += yyleng; }
 .               { /* Los demás caracteres no se cuentan. */ }
 %%
 
 int main(void)
 {
     yylex();
-    printf("Mayusculas: %zu\n", mayusculas);
-    printf("Minusculas: %zu\n", minusculas);
-    printf("Digitos: %zu\n", digitos);
-    printf("Espacios en blanco: %zu\n", blancos);
+    printf("Mayusculas: %d\n", mayusculas);
+    printf("Minusculas: %d\n", minusculas);
+    printf("Digitos: %d\n", digitos);
+    printf("Espacios en blanco: %d\n", blancos);
     return 0;
 }
