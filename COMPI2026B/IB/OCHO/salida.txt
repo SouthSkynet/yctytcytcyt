@@ -1,0 +1,10 @@
+Operador aritmetico: +
+Operador relacional: <=
+Operador relacional: !=
+Operador aritmetico: /
+Operador relacional: ==
+Operador aritmetico: *
+Operador aritmetico: -
+Operador relacional: >
+Operador relacional: >=
+Operador relacional: <
